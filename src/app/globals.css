@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cream: #FFF8F0;
+  --warm-accent: #D4704A;
+  --warm-light: #F4A26B;
+  --text-primary: #2D1F14;
+  --text-secondary: #6B5240;
+  --text-muted: #A08060;
+}
+
+body {
+  background-color: var(--cream);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-3 bg-warm-500 hover:bg-warm-400 text-white font-semibold rounded-full transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-8 py-3 border-2 border-warm-500 text-warm-500 font-semibold rounded-full hover:bg-warm-500 hover:text-white transition-all duration-200;
+  }
+
+  .card {
+    @apply bg-white rounded-3xl shadow-sm border border-cream-200;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 border-2 border-cream-300 rounded-2xl focus:outline-none focus:border-warm-400 transition-colors bg-cream-50 text-gray-800 placeholder-gray-400;
+  }
+
+  .option-btn {
+    @apply w-full text-left px-4 py-3 rounded-2xl border-2 transition-all duration-150 font-medium;
+  }
+
+  .option-btn-unselected {
+    @apply border-cream-300 bg-white hover:border-warm-300 hover:bg-warm-100 text-gray-700;
+  }
+
+  .option-btn-selected {
+    @apply border-warm-400 bg-warm-100 text-warm-500;
+  }
+}
+
+@media print {
+  .no-print { display: none !important; }
+  .print-page-break { page-break-before: always; }
+  body { background: white; }
+  .card { box-shadow: none; border: 1px solid #ddd; }
+}

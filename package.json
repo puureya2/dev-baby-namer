@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "mv next.config.ts next.config.ts.bak 2>/dev/null; next build; mv next.config.ts.bak next.config.ts 2>/dev/null; true",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },

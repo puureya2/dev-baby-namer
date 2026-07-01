@@ -1,9 +1,12 @@
 import OpenAI from "openai";
 import type { QuizAnswers, BabyName } from "@/types";
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+function getOpenAI(): OpenAI {
+  return new OpenAI({ apiKey: process.env.OPENAI_API_KEY! });
+}
 
 export async function generateNames(answers: QuizAnswers): Promise<BabyName[]> {
+  const openai = getOpenAI();
   const prompt = buildPrompt(answers);
 
   const response = await openai.chat.completions.create({

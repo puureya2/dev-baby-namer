@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { stripe } from "@/lib/stripe";
+import { getStripe } from "@/lib/stripe";
 import type { QuizAnswers } from "@/types";
 
 interface VerifyResponse {
@@ -16,7 +16,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
   }
 
   try {
-    const session = await stripe.checkout.sessions.retrieve(sessionId);
+    const session = await getStripe().checkout.sessions.retrieve(sessionId);
 
     if (session.payment_status !== "paid") {
       const response: VerifyResponse = { paid: false, answers: null, email: null };

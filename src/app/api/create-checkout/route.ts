@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { stripe } from "@/lib/stripe";
+import { getStripe } from "@/lib/stripe";
 import { getAppUrl } from "@/lib/url";
 import type { QuizAnswers } from "@/types";
 
@@ -18,7 +18,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
     const appUrl = getAppUrl();
 
-    const session = await stripe.checkout.sessions.create({
+    const session = await getStripe().checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "payment",
       line_items: [
